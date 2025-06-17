@@ -30,6 +30,8 @@ E.g. 'python GOPY.py generate_PG 30 30' will generate a 3 nm x 3 nm PG layer.
 - Used to generate a graphene oxide layer. The 'path_to_file' points to an existing pristine graphene PDB file. You may first generate a PG layer using GOPY. X corresponds to the desired number of carboxyl(羧基，在边部) functional groups, Y corresponds to the number of epoxy groups(环氧基) and Z corresponds to the number of hydroxyl groups(羟基). The file_to_save represents the name under which the new PDB file should be saved.
 E.g. 'python GOPY.py /path/to/PG.pdb 30 60 60' will generate a GO layer, attempting to place
 30 carboxyl groups, 60 epoxy groups and 60 hydroxyl groups.
+###### X: carboxyl(羧基，在边部)  Y: epoxy groups(环氧基)  Z: hydroxyl groups(羟基)
+###### CX 为PG中的C原子； CY为PG中链接官能团的C原子； CZ为环氧基团中的C原子，OE为环氧基团中的O原子；OL为羟基团中的O原子，HK为羟基团中的H原子
 
 ##### python GOPY.py generate_rGO_PEG_NH2 path_to_file X Y Z file_to_save     
 
