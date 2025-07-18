@@ -11,7 +11,9 @@
 
 ### Tutorial on Creating Graphene Oxide Topology Files (AMBER or GROMACS - to be used with Forcefields from the AMBER-family or OPLSAA)
 
-###### Pre-requisites: Python (prefferably 3.9 and not 3.8), AmberTools (from source or through "conda install -c conda-forge ambertools"). We will make use of tleap or xleap and parmed from AmberTools. In tleap / xleap we create .lib files for defining a residue and use .frcmod files to store parameters not included in a forcefield by default. Thus, please make sure you have these pre-requisites installed. Sometimes, when installing AmberTools through conda we have encountered some issues in the past, which seemed to occur randomly as they did not appear on all the machines we performed the installation on, such as: parmed might not be installed together with AmberTools, you can try to write to me regarding these too - I will do my best to help.
+###### Pre-requisites: Python (prefferably 3.9 and not 3.8), AmberTools (from source or through "conda install -c conda-forge ambertools"). We will make use of tleap or xleap and parmed from AmberTools. 
+###### In tleap / xleap we create .lib files for defining a residue and use .frcmod files to store parameters not included in a forcefield by default. 
+###### Thus, please make sure you have these pre-requisites installed. Sometimes, when installing AmberTools through conda we have encountered some issues in the past, which seemed to occur randomly as they did not appear on all the machines we performed the installation on, such as: parmed might not be installed together with AmberTools, you can try to write to me regarding these too - I will do my best to help.
 
 We assume you are familiar with the structure of a PDB file (you may see it quickly in the GOPY paper) and somewhat familiar with the files of GROMACS, .top (topology) and .gro (coordinates). You don't need to be familiar with .lib and .frcmod files to understand the workflow, though it helps if you are.
 
@@ -43,7 +45,7 @@ https://doi.org/10.1088/0022-3727/48/27/275402
 2. 2 Import the AMBER99SB default parameters by typing 
 ##### source oldff/leaprc.ff99SB. 
 Attention: Xleap has its own set of quirks you need to take into account. Keep your cursor inside the typing area on xleap and keep NumLock off) - assuming you have AmberTools installed in a conda environment called "AmberTools20", you may look for other parameter sets at: ../anaconda3/envs/AmberTools20/dat/leap/cmd/ (other than those in oldff/leaprc.ff99SB ; as we have been involved in nucleic acid simulations we used parmbsc1 or "source leaprc.DNA.bsc1")
-4. 3 Moving on, open all PDB files of interest, using:
+2. 3 Moving on, open all PDB files of interest, using:
 ##### mol_GGG = loadpdb /path/to/GGG.pdb
 ##### mol_C1A = loadpdb /path/to/C1A.pdb
 ##### mol_H1A = loadpdb /path/to/H1A.pdb
