@@ -34,7 +34,7 @@ https://doi.org/10.1088/0022-3727/48/27/275402
 2. VMD detects 1009 atoms when visualising PG.pdb, meaning we need 50 COOH (1009/20) and 101 OH and -O- groups (1009/10) to add. Use: "python GOPY.py generate_GO path/to/file.pdb 50 101 101 GO.pdb". Now you should have a GO PDB file as described. If you encounter any errors here make sure everything you typed makes sense. We do not expect any errors so far regarding the use of GOPY.
 
 #### Parameters for PG, -COOH, -OH, -O- ... we need these, follow the instructions below.
-###### Essentially, the authors state regarding functional groups: "The parameters of hydroxyl, carboxyl and epoxy groups were taken from the AMBER99SB force field for serine, glutamic acid and dialkyl ether, respectively.". I had to look in GROMACS force field files to figure the parameters. How one interprets their sentence depends, I guess. For example, if you go in your GROMACS installation /share/top/amber99sb.ff, open aminoacids.rtp, find "GLH" - that's where I picked the parameters for carboxyl (meaning partial charges, atom types etc). Well, following this line of thought I eventually ended up with the parameters I think are right for all three functional groups. 
+###### Essentially, the authors state regarding functional groups: "The parameters of hydroxyl-羟基, carboxyl-羧基 and epoxy-环氧基 groups were taken from the AMBER99SB force field for serine, glutamic acid and dialkyl ether, respectively.". I had to look in GROMACS force field files to figure the parameters. How one interprets their sentence depends, I guess. For example, if you go in your GROMACS installation /share/top/amber99sb.ff, open aminoacids.rtp, find "GLH" - that's where I picked the parameters for carboxyl (meaning partial charges, atom types etc). Well, following this line of thought I eventually ended up with the parameters I think are right for all three functional groups. 
 ###### Check the GO_tutorial folder. You will find all lib files, frcmod file etc. over there.
 ###### I have uploaded here library files (.lib) for the COOH functional group, but not COO. One can pick parameters for a COO functional group similarly as above. Have a look through the existing parameters. For the carbon atoms making up the pristine graphene, the authors state all parameters. All one needs to do is to convert them to GROMACS units (if I remember right). This aspect can be searched and understood easily.
 
@@ -66,9 +66,9 @@ If you prefer to do it manually, do:
 
 Thus, open xleap and write (or tleap if you don't need GUI):
 ##### source leaprc.DNA.bsc1 (this loads forcefield parameters or use source oldff/leaprc.ff99SB depending on which forcefield you would like to use)
-##### loadoff /path/to/library.lib (load all four: GGG, C1A, E1A, H1A)
-##### loadamberparams /path/to/file.frcmod (load the frcmod file with the parameters)
-##### mol = loadpdb /path/to/GO.pdb (load your GO molecule)
+##### loadoff /path/to/library.lib (load all four: GGG, C1A, E1A, H1A)                      loadoff /home/lezhang/GO-Remake/lib/OH.lib
+##### loadamberparams /path/to/file.frcmod (load the frcmod file with the parameters)       loadamberparams /home/lezhang/GO-Remake/FRCMOD/GO.frcmod
+##### mol = loadpdb /path/to/GO.pdb (load your GO molecule)                                 mol = loadpdb /home/lezhang/GO-Remake/GO-1.pdb 
 ##### edit mol (opens the molecule structure in a graphical format)
 ###### Now, the way this was designed you should have all parameters imported well and no editing of parameters should be necessary. This saves so much time...
 ##### bondbydistance mol (this will create all bonds based on distance, you should see it in the previously opened window if using xleap)
